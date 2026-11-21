@@ -2,6 +2,7 @@
 ### The Cryptographic Anti-CAPTCHA & Authorized Human Delegation Protocol for the Autonomous Agentic Web
 
 [![RFC-001 Status](https://img.shields.io/badge/RFC--001-Draft%20Standard-cyan)](packages/spec/RFC-001-POD.md)
+[![CI Tests](https://github.com/Abhiraj-git-hub/open-pod/actions/workflows/ci.yml/badge.svg)](https://github.com/Abhiraj-git-hub/open-pod/actions)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Ed25519 WebCrypto](https://img.shields.io/badge/Cryptography-Ed25519%20%2F%20WebCrypto-00ffa3)](packages/client)
 [![Target Working Group](https://img.shields.io/badge/Standards-W3C%20%2F%20ITU--T%20SG17-purple)](packages/spec)
