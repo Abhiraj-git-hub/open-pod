@@ -89,9 +89,6 @@ document.getElementById('runAttackBtn').addEventListener('click', async () => {
   attackConsole.innerHTML = '';
   appendLog(attackConsole, '⚠️ Generating attacker key for high-frequency burst...', 'line-amber');
   
-  const tokenRes = await fetch('/api/demo/generate-token', { method: 'POST' });
-  const { token } = await tokenRes.json();
-
   appendLog(attackConsole, 'Flooding /api/flights with 10 rapid concurrent requests...', 'line-cyan');
 
   let allowedCount = 0;
@@ -100,6 +97,10 @@ document.getElementById('runAttackBtn').addEventListener('click', async () => {
 
   for (let i = 1; i <= 10; i++) {
     try {
+      // Attacker signs a fresh token with new nonce on each request to bypass replay detection
+      const tokenRes = await fetch('/api/demo/generate-token', { method: 'POST' });
+      const { token } = await tokenRes.json();
+
       const res = await fetch('/api/flights', {
         headers: {
           'Sec-Proof-Of-Delegation': token,

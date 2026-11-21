@@ -11,7 +11,8 @@
   "scripts": {
     "build": "npm run --workspaces --if-present build",
     "test": "node scripts/test-e2e.js",
-    "demo": "node apps/demo/server.js"
+    "demo": "node apps/demo/server.js",
+    "agent": "node scripts/my-agent.js"
   },
   "keywords": [
     "agentic-web",
