@@ -41,8 +41,8 @@ function recordEvent(type, message, status) {
   }
 }
 
-// 🛡️ Apply OpenPoD Guard Middleware
-app.use(podGuard({
+// 🛡️ Protected Route Guard for Flights API
+const flightGuard = podGuard({
   maxServerLimit: 5, // Strict limit for demo
   onBypass: (claims) => {
     recordEvent('ALLOWED', `Agent (${claims.iss.slice(0, 10)}...) verified via Ed25519`, 200);
@@ -50,7 +50,7 @@ app.use(podGuard({
   onBlock: (reason) => {
     recordEvent('BLOCKED', `Unverified request rejected: ${reason}`, 403);
   }
-}));
+});
 
 // Mock flight inventory
 const FLIGHT_DATABASE = [
@@ -60,8 +60,8 @@ const FLIGHT_DATABASE = [
   { id: 'FL-109', airline: 'Nordic Sky', from: 'BLR', to: 'ZRH', departure: '09:20 PM', price: '$590', seats: 8 }
 ];
 
-// PROTECTED ENDPOINT: Flight Search API
-app.get('/api/flights', (req, res) => {
+// PROTECTED ENDPOINT: Flight Search API (Protected by flightGuard)
+app.get('/api/flights', flightGuard, (req, res) => {
   // If request has NOT been cryptographically verified by PoD:
   if (!req.pod || !req.pod.verified) {
     return res.status(403).json({

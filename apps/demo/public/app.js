@@ -63,7 +63,8 @@ document.getElementById('runPodBtn').addEventListener('click', async () => {
   const reqStart = performance.now();
   const res = await fetch('/api/flights', {
     headers: {
-      'Sec-Proof-Of-Delegation': token
+      'Sec-Proof-Of-Delegation': token,
+      'X-Proof-Of-Delegation': token
     }
   });
   const data = await res.json();
@@ -100,7 +101,10 @@ document.getElementById('runAttackBtn').addEventListener('click', async () => {
   for (let i = 1; i <= 10; i++) {
     try {
       const res = await fetch('/api/flights', {
-        headers: { 'Sec-Proof-Of-Delegation': token }
+        headers: {
+          'Sec-Proof-Of-Delegation': token,
+          'X-Proof-Of-Delegation': token
+        }
       });
       const data = await res.json();
 

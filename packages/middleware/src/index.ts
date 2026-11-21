@@ -14,7 +14,8 @@ export function podGuard(options: PoDGuardOptions = {}) {
   const verifier = new PoDVerifier();
 
   return async (req: any, res: any, next: any) => {
-    const podHeader = req.headers['sec-proof-of-delegation'];
+    // Check both standard Sec- header (from Extension/Proxy) and X- header (from in-page Web Client)
+    const podHeader = (req.headers['sec-proof-of-delegation'] || req.headers['x-proof-of-delegation']) as string;
 
     // 1. If no PoD header is provided, flag as unverified (fallback to standard anti-bot/CAPTCHA)
     if (!podHeader) {
