@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "OpenPoD - Proof-of-Delegation Agent Shield",
+  "version": "1.0.0",
+  "description": "Cryptographic anti-CAPTCHA and authorized human delegation for autonomous web agents",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "OpenPoD Control Panel"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenPoD Control Panel</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #121826;
+      --border: #232d42;
+      --accent: #00f0ff;
+      --green: #00ffa3;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 360px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 16px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      background: rgba(0, 240, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .status-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .row:last-child { margin-bottom: 0; }
+    .label { color: var(--muted); }
+    .val { font-family: monospace; font-size: 12px; }
+    .active-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+      margin-right: 6px;
+    }
+    .key-box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--accent);
+      word-break: break-all;
+      margin-top: 6px;
+      border: 1px dashed var(--border);
+    }
+    .slider-wrap {
+      margin-top: 10px;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00f0ff 0%, #0077ff 100%);
+      color: #000;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .log-title {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 10px 0 6px 0;
+    }
+    .log-list {
+      max-height: 110px;
+      overflow-y: auto;
+      font-size: 11px;
+      font-family: monospace;
+    }
+    .log-item {
+      padding: 4px 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .success { color: var(--green); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <span class="active-dot"></span>
+      <h3 style="font-size: 15px;">OpenPoD Agent Shield</h3>
+    </div>
+    <span class="badge">RFC-001</span>
+  </div>
+
+  <div class="status-card">
+    <div class="row">
+      <span class="label">Hardware Key (Ed25519)</span>
+      <span class="val success">WebCrypto Active</span>
+    </div>
+    <div id="keyFingerprint" class="key-box">Generating keypair...</div>
+  </div>
+
+  <div class="status-card">
+    <div class="row">
+      <span class="label">Rate-Limit Budget</span>
+      <span class="val" id="limitLabel">10 req / min</span>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" id="rateSlider" min="1" max="60" value="10">
+    </div>
+  </div>
+
+  <button class="btn" id="generateTokenBtn">Sign Test Delegation Token</button>
+
+  <div class="log-title">Recent Delegation Handshakes</div>
+  <div class="log-list" id="logList">
+    <div class="log-item">
+      <span>Ready to authorize agents</span>
+      <span class="success">ONLINE</span>
+    </div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

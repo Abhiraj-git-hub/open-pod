@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenPoD Protocol - Live Interactive Testbed & Benchmark</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="brand">
+      <div class="logo-shield">🛡️</div>
+      <div>
+        <div class="brand-title">OpenPoD Protocol</div>
+        <div class="brand-sub">RFC-001: Proof-of-Delegation for Autonomous Web Agents</div>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge badge-accent">WebCrypto Ed25519</span>
+      <span class="badge badge-green">MIT NANDA & ITU-T Compatible</span>
+      <button id="resetStatsBtn" class="btn-sm">Reset Stats</button>
+    </div>
+  </header>
+
+  <!-- Telemetry Counter Banner -->
+  <div class="stats-banner">
+    <div class="stat-card">
+      <div class="stat-label">Total Requests</div>
+      <div class="stat-val" id="statTotal">0</div>
+    </div>
+    <div class="stat-card stat-card-green">
+      <div class="stat-label">PoD Agents Verified (200 OK)</div>
+      <div class="stat-val" id="statAllowed">0</div>
+    </div>
+    <div class="stat-card stat-card-amber">
+      <div class="stat-label">Unverified Bots Blocked (403)</div>
+      <div class="stat-val" id="statBlocked">0</div>
+    </div>
+    <div class="stat-card stat-card-red">
+      <div class="stat-label">DDoS Keys Revoked (429)</div>
+      <div class="stat-val" id="statRevoked">0</div>
+    </div>
+  </div>
+
+  <!-- Interactive Test Arena -->
+  <main class="arena">
+    
+    <!-- Test Case 1: Legacy Scraping Agent -->
+    <div class="arena-col">
+      <div class="col-header">
+        <div class="col-title">
+          <span class="icon">🤖</span>
+          <span>Legacy Web Agent</span>
+        </div>
+        <span class="tag tag-red">No PoD Token</span>
+      </div>
+      <p class="col-desc">Standard AI scraper (Puppeteer, LangChain, or raw cURL). Hits the server without human cryptographic delegation.</p>
+      
+      <button class="btn btn-red" id="runLegacyBtn">Dispatch Legacy Agent</button>
+
+      <div class="console-box" id="legacyConsole">
+        <div class="console-placeholder">// Click "Dispatch Legacy Agent" to simulate standard bot navigation...</div>
+      </div>
+    </div>
+
+    <!-- Test Case 2: Authorized Agent with PoD -->
+    <div class="arena-col col-highlight">
+      <div class="col-header">
+        <div class="col-title">
+          <span class="icon">🛡️</span>
+          <span>Authorized PoD Agent</span>
+        </div>
+        <span class="tag tag-green">PoD Shield Active</span>
+      </div>
+      <p class="col-desc">Agent presents hardware-signed <code>Sec-Proof-Of-Delegation</code> header with domain lock and 10 req/min rate limit.</p>
+
+      <button class="btn btn-green" id="runPodBtn">Dispatch PoD Agent (Bypass)</button>
+
+      <div class="console-box" id="podConsole">
+        <div class="console-placeholder">// Click "Dispatch PoD Agent" to test instant zero-CAPTCHA bypass...</div>
+      </div>
+    </div>
+
+    <!-- Test Case 3: Malicious DDoS / Rate Spammer -->
+    <div class="arena-col">
+      <div class="col-header">
+        <div class="col-title">
+          <span class="icon">⚠️</span>
+          <span>Malicious Attacker Bot</span>
+        </div>
+        <span class="tag tag-amber">Abuse Simulation</span>
+      </div>
+      <p class="col-desc">Attacker attempts to flood the API with rapid requests. Tests cryptographic rate-limiting and automatic key burning.</p>
+
+      <button class="btn btn-amber" id="runAttackBtn">Launch 10x Attack Burst</button>
+
+      <div class="console-box" id="attackConsole">
+        <div class="console-placeholder">// Click to simulate high-frequency agent spamming...</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Live Telemetry Log Feed -->
+  <section class="log-section">
+    <div class="log-header">
+      <div class="log-title">
+        <span class="pulse-indicator"></span>
+        <span>Live Server Telemetry & Verification Radar</span>
+      </div>
+      <div class="log-meta">Monitoring /api/flights via @open-pod/middleware</div>
+    </div>
+    <div class="log-stream" id="eventStream">
+      <!-- Events injected dynamically -->
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

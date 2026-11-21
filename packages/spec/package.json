@@ -1,0 +1,7 @@
+{
+  "name": "@open-pod/spec",
+  "version": "0.1.0",
+  "description": "RFC Specification and JSON Schemas for Proof-of-Delegation (PoD) Protocol",
+  "main": "index.js",
+  "license": "Apache-2.0"
+}

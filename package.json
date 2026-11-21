@@ -1,0 +1,31 @@
+{
+  "name": "open-pod-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Proof-of-Delegation (PoD) Protocol - Cryptographic Anti-CAPTCHA for Autonomous Web Agents",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run --workspaces --if-present build",
+    "test": "node scripts/test-e2e.js",
+    "demo": "node apps/demo/server.js"
+  },
+  "keywords": [
+    "agentic-web",
+    "proof-of-delegation",
+    "captcha",
+    "ai-agents",
+    "security",
+    "cryptography",
+    "ed25519"
+  ],
+  "author": "Abhiraj Kumar P",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

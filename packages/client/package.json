@@ -1,0 +1,13 @@
+{
+  "name": "@open-pod/client",
+  "version": "0.1.0",
+  "description": "Client SDK for Proof-of-Delegation (PoD) token generation and signing",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["pod", "agent", "webcrypto", "ed25519", "authentication"],
+  "author": "Abhiraj Kumar P",
+  "license": "Apache-2.0"
+}

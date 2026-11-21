@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-pod.org/schemas/v1/pod-token.json",
+  "title": "ProofOfDelegationToken",
+  "description": "Schema for Proof-of-Delegation (PoD) token payload",
+  "type": "object",
+  "properties": {
+    "iss": {
+      "type": "string",
+      "description": "Base64URL-encoded Ed25519 public key of the delegator"
+    },
+    "aud": {
+      "type": "string",
+      "format": "uri",
+      "description": "Target origin (e.g. https://api.example.com)"
+    },
+    "iat": {
+      "type": "integer",
+      "description": "Issued at timestamp (UNIX epoch in seconds)"
+    },
+    "exp": {
+      "type": "integer",
+      "description": "Expiration timestamp (UNIX epoch in seconds, max 60s from iat)"
+    },
+    "jti": {
+      "type": "string",
+      "description": "Unique nonce / UUID to prevent token replay"
+    },
+    "lim": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 120,
+      "description": "Declared rate limit in requests per minute"
+    },
+    "scp": {
+      "type": "string",
+      "description": "Action scope granted to the agent"
+    }
+  },
+  "required": ["iss", "aud", "iat", "exp", "jti", "lim", "scp"],
+  "additionalProperties": false
+}

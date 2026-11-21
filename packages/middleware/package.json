@@ -1,0 +1,13 @@
+{
+  "name": "@open-pod/middleware",
+  "version": "0.1.0",
+  "description": "Server middleware for Proof-of-Delegation (PoD) token verification and CAPTCHA bypass",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["pod", "agent", "middleware", "express", "security", "anti-bot"],
+  "author": "Abhiraj Kumar P",
+  "license": "Apache-2.0"
+}
