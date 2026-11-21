@@ -23,7 +23,7 @@
     "cryptography",
     "ed25519"
   ],
-  "author": "Abhiraj Kumar P",
+  "author": "OpenPoD Contributors",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^26.6.6",

@@ -8,6 +8,6 @@
     "build": "tsc"
   },
   "keywords": ["pod", "agent", "middleware", "express", "security", "anti-bot"],
-  "author": "Abhiraj Kumar P",
+  "author": "OpenPoD Contributors",
   "license": "Apache-2.0"
 }

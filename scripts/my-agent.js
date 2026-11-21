@@ -1,7 +1,7 @@
 import { generatePoDKeypair, createDelegationToken } from '../packages/client/dist/index.js';
 
 console.log('===========================================================');
-console.log('🤖 ABHIRAJ\'S AUTONOMOUS TRAVEL AGENT (LIVE DEMO)');
+console.log('🤖 AUTONOMOUS TRAVEL AGENT (LIVE DEMO)');
 console.log('===========================================================\n');
 
 async function runAgent() {
@@ -28,10 +28,10 @@ async function runAgent() {
   }
 
   // -------------------------------------------------------------
-  // STEP 2: The Agent puts on Abhiraj's OpenPoD VIP Wristband
+  // STEP 2: The Agent puts on an OpenPoD VIP Wristband
   // -------------------------------------------------------------
   console.log('-----------------------------------------------------------');
-  console.log('👉 SCENARIO 2: You give your agent your OpenPoD VIP Wristband...');
+  console.log('👉 SCENARIO 2: You give your agent an OpenPoD VIP Wristband...');
   
   console.log('   1. Your laptop creates a digital signature (Ed25519)...');
   const myKeypair = await generatePoDKeypair();
@@ -58,7 +58,7 @@ async function runAgent() {
   if (vipRes.status === 200 && vipData.status === 'success') {
     console.log('   ✅ RESULT: BOUNCER SCANNED TOKEN IN 2ms & LET THE AGENT IN!');
     console.log(`      Status: 200 OK (Instant Bypass)`);
-    console.log(`      Agent retrieved ${vipData.flights.length} live flight deals for Abhiraj:`);
+    console.log(`      Agent retrieved ${vipData.flights.length} live flight deals:`);
     vipData.flights.forEach(f => {
       console.log(`      ✈️  ${f.airline.padEnd(14)} | ${f.from} ➔ ${f.to} | Departs: ${f.departure} | ${f.price}`);
     });

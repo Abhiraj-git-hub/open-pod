@@ -69,7 +69,7 @@ Modern websites rely on **visual CAPTCHAs, TLS fingerprinting (JA3/JA4), and ant
 
 ### 1. Install & Build
 ```bash
-git clone https://github.com/abhirajkumarp/open-pod.git
+git clone https://github.com/Abhiraj-git-hub/open-pod.git
 cd open-pod
 npm install
 npm run build

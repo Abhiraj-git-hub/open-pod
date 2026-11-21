@@ -2,7 +2,7 @@
 ## A Cryptographic Handshake for Authorized Autonomous Web Agents
 
 * **Status:** Proposed Standard / Draft
-* **Author:** Abhiraj Kumar P
+* **Author:** OpenPoD Working Group
 * **Target Working Group:** Agentic Web Architecture / W3C WebAppSec / UN ITU-T SG17
 * **Date:** November 2026
 
